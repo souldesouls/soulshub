@@ -26,6 +26,7 @@ nbproject
 .gitmodules
 
 themes/*
+!themes/Souls
 !themes/HumHub
 
 favicon.ico
