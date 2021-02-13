@@ -74,6 +74,7 @@ class Password extends ActiveRecord
     public function rules()
     {
         return [
+            // souls
             // [['newPassword', 'newPasswordConfirm'], 'required', 'on' => 'registration'],
             [['newPassword'], 'required', 'on' => 'registration'],
             // [['newPassword', 'newPasswordConfirm'], function ($attribute, $params) {
@@ -84,6 +85,7 @@ class Password extends ActiveRecord
             [['created_at'], 'safe'],
             [['algorithm'], 'string', 'max' => 20],
             [['currentPassword'], CheckPasswordValidator::class, 'on' => 'changePassword'],
+            // souls
             // [['newPassword', 'newPasswordConfirm', 'currentPassword'], 'required', 'on' => 'changePassword'],
             // [['newPassword'], 'unequalsCurrentPassword', 'on' => 'changePassword'],
             // [['newPasswordConfirm'], 'compare', 'compareAttribute' => 'newPassword', 'on' => ['registration', 'changePassword']],

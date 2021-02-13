@@ -16,6 +16,7 @@ $this->pageTitle = Yii::t('UserModule.auth', 'Create Account');
                 <?= $hForm->render($form); ?>
                 <?php \yii\bootstrap\ActiveForm::end(); ?>
 
+                <!-- souls -->
                 <br>
                 <p class="lead">
                     <?= Yii::t('UserModule.base', 'A baseline measurement of your mental influence will be taken. Focus on what a wonderful human being you are as you press that button!') ?>
@@ -28,11 +29,14 @@ $this->pageTitle = Yii::t('UserModule.auth', 'Create Account');
 <script <?= \humhub\libs\Html::nonce() ?>>
     $(function () {
         // set cursor to login field
+        // souls
         // $('#User_username').focus();
         // $('#password-newpassword').focus();
 
+        // souls
         $('#user-username').attr('readonly', true);
 
+        // souls
         // insert refresh icon to load a new randomly generated username
         $('.field-user-username').prepend('<div style="position: absolute; right: 18px; padding: 4px; font-size: 19px; cursor: pointer; top: 136.5px;"><i class="fa fa-refresh" onClick="window.location.reload();"></i></div>');
 

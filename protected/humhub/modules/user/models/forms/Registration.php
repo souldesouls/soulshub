@@ -17,6 +17,7 @@ use humhub\modules\user\models\User;
 use Yii;
 use yii\helpers\ArrayHelper;
 
+// souls
 require("random-username-generator/RandomUsernameGenerator.php");
 
 /**
@@ -133,6 +134,7 @@ class Registration extends HForm
             'type' => 'text',
             'class' => 'form-control',
             'maxlength' => 25,
+            // souls
             'value' => generate_random_username()
         ];
         $form['elements']['time_zone'] = [
@@ -164,6 +166,7 @@ class Registration extends HForm
                     'class' => 'form-control',
                     'maxlength' => 255,
                 ],
+                // souls
                 // 'newPasswordConfirm' => [
                 //     'type' => 'password',
                 //     'class' => 'form-control',
