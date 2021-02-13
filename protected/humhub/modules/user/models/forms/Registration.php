@@ -133,7 +133,6 @@ class Registration extends HForm
             'type' => 'text',
             'class' => 'form-control',
             'maxlength' => 25,
-            'readonly' => 'true',
             'value' => generate_random_username()
         ];
         $form['elements']['time_zone'] = [
