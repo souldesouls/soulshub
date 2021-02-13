@@ -74,19 +74,19 @@ class Password extends ActiveRecord
     public function rules()
     {
         return [
-            [['newPassword', 'newPasswordConfirm'], 'required', 'on' => 'registration'],
-            [['newPassword', 'newPasswordConfirm'], function ($attribute, $params) {
-                $this->validateAdvancedPasswordRules($attribute, $params);
-            }],
+            // [['newPassword', 'newPasswordConfirm'], 'required', 'on' => 'registration'],
+            // [['newPassword', 'newPasswordConfirm'], function ($attribute, $params) {
+            //     $this->validateAdvancedPasswordRules($attribute, $params);
+            // }],
             [['user_id'], 'integer'],
             [['password', 'salt'], 'string'],
             [['created_at'], 'safe'],
             [['algorithm'], 'string', 'max' => 20],
             [['currentPassword'], CheckPasswordValidator::class, 'on' => 'changePassword'],
-            [['newPassword', 'newPasswordConfirm', 'currentPassword'], 'required', 'on' => 'changePassword'],
-            [['newPassword'], 'unequalsCurrentPassword', 'on' => 'changePassword'],
-            [['newPasswordConfirm'], 'compare', 'compareAttribute' => 'newPassword', 'on' => ['registration', 'changePassword']],
-            [['mustChangePassword'], 'boolean'],
+            // [['newPassword', 'newPasswordConfirm', 'currentPassword'], 'required', 'on' => 'changePassword'],
+            // [['newPassword'], 'unequalsCurrentPassword', 'on' => 'changePassword'],
+            // [['newPasswordConfirm'], 'compare', 'compareAttribute' => 'newPassword', 'on' => ['registration', 'changePassword']],
+            // [['mustChangePassword'], 'boolean'],
         ];
     }
 
