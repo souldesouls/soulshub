@@ -23,7 +23,11 @@ $this->pageTitle = Yii::t('UserModule.auth', 'Create Account');
 <script <?= \humhub\libs\Html::nonce() ?>>
     $(function () {
         // set cursor to login field
-        $('#User_username').focus();
+        // $('#User_username').focus();
+        // $('#password-newpassword').focus();
+
+        // insert refresh icon to load a new randomly generated username
+        $('.field-user-username').prepend('<div style="position: absolute; right: 18px; padding: 4px; font-size: 19px; cursor: pointer; top: 136.5px;"><i class="fa fa-refresh" onClick="window.location.reload();"></i></div>');
 
         // set user time zone val
         $('#user-time_zone').val(Intl.DateTimeFormat().resolvedOptions().timeZone);
