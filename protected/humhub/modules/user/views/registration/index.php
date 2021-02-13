@@ -15,6 +15,11 @@ $this->pageTitle = Yii::t('UserModule.auth', 'Create Account');
                 <?php $form = \yii\bootstrap\ActiveForm::begin(['id' => 'registration-form', 'enableClientValidation' => false]); ?>
                 <?= $hForm->render($form); ?>
                 <?php \yii\bootstrap\ActiveForm::end(); ?>
+
+                <br>
+                <p class="lead">
+                    <?= Yii::t('UserModule.base', 'A baseline measurement of your mental influence will be taken. Focus on what a wonderful human being you are as you press that button!') ?>
+                </p>
             </div>
         </div>
     </div>
