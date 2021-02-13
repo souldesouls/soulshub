@@ -75,6 +75,7 @@ class Password extends ActiveRecord
     {
         return [
             // [['newPassword', 'newPasswordConfirm'], 'required', 'on' => 'registration'],
+            [['newPassword'], 'required', 'on' => 'registration'],
             // [['newPassword', 'newPasswordConfirm'], function ($attribute, $params) {
             //     $this->validateAdvancedPasswordRules($attribute, $params);
             // }],
