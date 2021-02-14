@@ -5,8 +5,8 @@ if (!function_exists('generate_random_username')) {
         $adjectives = file("protected/humhub/modules/user/models/forms/random-username-generator/langs/" . $lang . "/adjectives.txt", FILE_IGNORE_NEW_LINES);
         $nouns = file("protected/humhub/modules/user/models/forms/random-username-generator/langs/" . $lang . "/nouns.txt", FILE_IGNORE_NEW_LINES);
 
-        $adjective = $adjectives[rand(0, count($adjectives))];
-        $noun = $nouns[rand(0, count($nouns))];
+        $adjective = $adjectives[rand(0, count($adjectives) - 1)];
+        $noun = $nouns[rand(0, count($nouns) - 1)];
         
         return $adjective . $noun;
     }
