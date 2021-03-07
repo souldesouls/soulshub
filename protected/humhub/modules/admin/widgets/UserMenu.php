@@ -44,7 +44,8 @@ class UserMenu extends TabMenu
             'label' => Yii::t('AdminModule.user', 'Settings'),
             'url' => ['/admin/authentication'],
             'sortOrder' => 200,
-            'isActive' => MenuLink::isActiveState('admin', 'authentication'),
+            'isActive' => MenuLink::isActiveState('admin', ['authentication', 'user-permissions']) ||
+                          MenuLink::isActiveState('ldap', 'admin'),
             'isVisible' => Yii::$app->user->can(ManageSettings::class)
         ]));
 
@@ -79,13 +80,6 @@ class UserMenu extends TabMenu
             'isVisible' => Yii::$app->user->can(ManageGroups::class)
         ]));
 
-        $this->addEntry(new MenuLink([
-            'label' => Yii::t('AdminModule.user', 'Default Permissions'),
-            'url' => ['/admin/user-permissions'],
-            'sortOrder' => 600,
-            'isActive' => MenuLink::isActiveState('admin', 'user-permissions'),
-            'isVisible' => Yii::$app->user->can(ManageGroups::class)
-        ]));
 
         parent::init();
     }
