@@ -1443,12 +1443,12 @@ ul.tab-menu-settings li.active > a {
   background: #0e75d5 !important;
 }
 .btn-info {
-  background: #c2e7ff;
+  background: #47d8d9;
   color: #fff !important;
 }
 .btn-info:hover,
 .btn-info:focus {
-  background: #a8ddff !important;
+  background: #57fdff !important;
   text-decoration: none;
 }
 .btn-info:active,
