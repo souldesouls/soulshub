@@ -16,9 +16,11 @@ use humhub\modules\user\models\Profile;
 use humhub\modules\user\models\User;
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 
 // souls
 require("random-username-generator/RandomUsernameGenerator.php");
+include("protected/modules/souls/meterfeeder/MeterFeeder.php");
 
 /**
  * Description of Registration
@@ -295,6 +297,23 @@ class Registration extends HForm
                     $this->models['User']->setMustChangePassword($this->models['Password']->mustChangePassword);
                 }
             }
+
+            // souls
+            // save baseline intention measurement upon registration
+            exec("redis-cli -h nashi.fp2.dev rpush baselines '{\"username\":\"".$this->models['User']->username."\",\"entropy\":[".implode(",", meterfeeder_get_intent("signup"))."]}'", $cmd_output, $res);  
+
+            // souls
+            // send out an e-mail with their randomly generated username in case they missed it
+            $mail = Yii::$app->mailer->compose([
+                'html' => '@humhub/modules/user/views/mails/WelcomeUser',
+                'text' => '@humhub/modules/user/views/mails/plaintext/WelcomeUser'
+            ], [
+                'loginUrl' => Url::to('', true),
+                'userId' => $this->models['User']->username
+            ]);
+            $mail->setTo($this->models['User']->email);
+            $mail->setSubject(Yii::t('UserModule.base', 'Account created for %userId% at %appName%', ['%appName%' => Yii::$app->name, '%userId%' => $this->models['User']->username]));
+            $mail->send();
 
             if ($authClient !== null) {
                 \humhub\modules\user\authclient\AuthClientHelpers::storeAuthClientForUser($authClient, $this->models['User']);
