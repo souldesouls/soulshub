@@ -300,7 +300,7 @@ class Registration extends HForm
 
             // souls
             // save baseline intention measurement upon registration
-            exec("redis-cli -h nashi.fp2.dev rpush baselines '{\"username\":\"".$this->models['User']->username."\",\"entropy\":[".implode(",", meterfeeder_get_intent("signup"))."]}'", $cmd_output, $res);  
+            exec("redis-cli -h nashi.fp2.dev rpush sls_baselines '{\"username\":\"".$this->models['User']->username."\",\"entropy\":[".implode(",", meterfeeder_get_intent("signup"))."]}'", $cmd_output, $res);  
 
             // souls
             // send out an e-mail with their randomly generated username in case they missed it
