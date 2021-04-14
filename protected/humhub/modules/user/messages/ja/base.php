@@ -86,4 +86,5 @@ return array (
   'invited you to join {name}.' => '',
   'invited you to join {space} on {name}.' => '',
   'or' => 'または',
+  'A baseline measurement of your mental influence will be taken. Focus on what a wonderful human being you are as you press that button!' => 'あなたの心・想いを測りますので、登録ボタンを押す際は自分がどれだけ素晴らしい人かということに集中してみてくださいね！',
 );
