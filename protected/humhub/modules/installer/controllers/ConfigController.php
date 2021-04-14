@@ -527,7 +527,6 @@ class ConfigController extends Controller
             throw new CException("Finished without secret setting!");
         }
 
-        Yii::$app->settings->set('defaultTimeZone', Yii::$app->timeZone);
         Yii::$app->settings->set('timeZone', Yii::$app->timeZone);
 
         // Set to installed

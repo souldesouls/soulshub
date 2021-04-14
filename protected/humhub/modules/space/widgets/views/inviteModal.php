@@ -1,7 +1,7 @@
 <?php
 /* @var $this \humhub\modules\ui\view\components\View */
 /* @var $canInviteExternal bool */
-/* @var $canAddWithoutInvite bool */
+/* @var $canManageMembers bool */
 /* @var $submitText string */
 /* @var $submitAction string */
 /* @var $model \humhub\modules\space\models\forms\InviteForm */
@@ -70,7 +70,7 @@ $form = ActiveForm::begin([
             ]);
             ?>
 
-            <?php if ($canAddWithoutInvite) : ?>
+            <?php if ($canManageMembers) : ?>
                 <br />
                 <?= $form
                     ->field($model, 'withoutInvite')

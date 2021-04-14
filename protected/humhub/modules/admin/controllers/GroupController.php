@@ -13,6 +13,7 @@ use humhub\modules\admin\components\Controller;
 use humhub\modules\admin\models\forms\AddGroupMemberForm;
 use humhub\modules\admin\models\GroupSearch;
 use humhub\modules\admin\models\UserSearch;
+use humhub\modules\admin\notifications\ExcludeGroupNotification;
 use humhub\modules\admin\permissions\ManageGroups;
 use humhub\modules\queue\helpers\QueueHelper;
 use humhub\modules\user\models\forms\EditGroupForm;
@@ -157,7 +158,12 @@ class GroupController extends Controller
         $group = Group::findOne(['id' => $request->get('id')]);
         $this->checkGroupAccess($group);
 
-        $group->removeUser($request->get('userId'));
+        if ($group->removeUser($request->get('userId'))) {
+            ExcludeGroupNotification::instance()
+                ->about($group)
+                ->from(Yii::$app->user->identity)
+                ->send(User::findOne(['id' => $request->get('userId')]));
+        }
 
         if ($request->isAjax) {
             Yii::$app->response->format = 'json';

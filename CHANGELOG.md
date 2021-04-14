@@ -1,33 +1,13 @@
 HumHub Changelog
 ================
 
-1.8.2 (Unreleased)
--------------------
-
-- Fix #4959: Horizontal scrollbar for images
-- Fix #4898: No streamExcludes option when loading single stream entry
-- Enh #4960: Added “codeception/module-rest” for testing of REST API modules
-- Enh #4976: Added REST API Codeception tester
-- Enh #4967: Module update broken with expired licence key
-- Enh #4972: Fix enabling to send notification on remove user from group
-- Fix #4985: Fix Activity Mail QueryParams on console mode
-- Fix #4989: Translate profile field title in admin list
-- Fix #5002: Fix loading of fixture spaces on tests
-
-
-1.8.1 (March 12, 2021)
-----------------------
+1.8.1 (Unreleased)
+---------------------
 
 - Fix #4931: Fix highlight parent navigations for sub section "Profile Permissions" (and LDAP)
 - Fix #4934: Show error instead of warning when using different MySQL Table Engines
 - Fix #4936: Fix emoji in sample content
 - Fix #4940: Typo in German translation "Benachrichtigungen"
-- Fix #4942: MemberOf Display in LDAP CLI Show User Details
-- Fix #4465: LDAP PHP 8 incompatibility (multiPageSearch)
-- Enh #4569: Config to overwrite module path
-- Fix #4946: Fix migration of the default permissions
-- Fix #4955: Fix convert emoji with sign "+"
-- Fix #4956: Fix file hash column length
 
 
 1.8.0 (March 1, 2021)

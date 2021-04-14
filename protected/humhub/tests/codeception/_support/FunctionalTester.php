@@ -22,7 +22,7 @@ use yii\helpers\Url;
  *
  * @SuppressWarnings(PHPMD)
  */
-class FunctionalTester extends BaseTester
+class FunctionalTester extends \Codeception\Actor
 {
 
     use _generated\FunctionalTesterActions;
@@ -235,31 +235,34 @@ class FunctionalTester extends BaseTester
         $this->amOnSpace(4, $path, $params, $post);
     }
 
-    public function amOnSpace($spaceOrIndexOrGuid, $path = '/space/space', $params = [], $post = false)
+    public $spaces = [
+        '5396d499-20d6-4233-800b-c6c86e5fa34a',
+        '5396d499-20d6-4233-800b-c6c86e5fa34b',
+        '5396d499-20d6-4233-800b-c6c86e5fa34c',
+        '5396d499-20d6-4233-800b-c6c86e5fa34d',
+    ];
+
+    public function amOnSpace($guid, $path = '/space/space', $params = [], $post = false)
     {
-        if (is_bool($params)) {
+        if(is_bool($params)) {
             $post = $params;
             $params = [];
         }
 
-        if (!$path) {
+        if(!$path) {
             $path = '/space/space';
         }
 
-        if(is_int($spaceOrIndexOrGuid)) {
-            $guid = $this->getFixtureSpaceGuid(--$spaceOrIndexOrGuid);
-        } else if(is_string($spaceOrIndexOrGuid)) {
-            $guid = $spaceOrIndexOrGuid;
-        } else if($spaceOrIndexOrGuid instanceof Space) {
-            $guid = $spaceOrIndexOrGuid->guid;
-        } else {
-            $guid = '';
+        if(is_int($guid)) {
+            $guid = $this->spaces[--$guid];
+        } else if($guid instanceof Space) {
+            $guid = $guid->guid;
         }
 
         $params['cguid'] = $guid;
 
-        if ($post) {
-            $route = array_merge([$path], $params);
+        if($post) {
+            $route =  array_merge([$path], $params);
             $this->sendAjaxPostRequest(Url::toRoute($route), (is_array($post) ? $post : []));
         } else {
             $this->amOnRoute($path, $params);
@@ -283,6 +286,17 @@ class FunctionalTester extends BaseTester
     public function amOnDashboard()
     {
         tests\codeception\_pages\DashboardPage::openBy($this);
+    }
+
+    public function enableModule($guid, $moduleId)
+    {
+        if(is_int($guid)) {
+            $guid = $this->spaces[--$guid];
+        }
+
+        $space = Space::findOne(['guid' => $guid]);
+        $space->enableModule($moduleId);
+        Yii::$app->moduleManager->flushCache();
     }
 
 }

@@ -43,12 +43,6 @@ class Module extends \humhub\components\Module
     public $disableFollow = false;
 
     /**
-     * @var boolean defines if a space members can add anyone the the space without invitation
-     * @since 1.8
-     */
-    public $membersCanAddWithoutInvite = false;
-
-    /**
      * @var int maximum space url length
      * @since 1.3
      */

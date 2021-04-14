@@ -260,7 +260,7 @@ class UserController extends Controller
     {
         $user = User::findOne(['id' => $id]);
 
-        $this->checkUserAccess($user);
+        $this->checkGroupAccess($user);
 
         if ($user->isCurrentUser()) {
             throw new HttpException(400, Yii::t('AdminModule.user', 'You cannot delete yourself!'));
@@ -274,10 +274,10 @@ class UserController extends Controller
         return $this->render('delete', ['model' => $model]);
     }
 
-    public function checkUserAccess(User $user = null)
+    public function checkGroupAccess(User $user = null)
     {
         if (!$user) {
-            throw new HttpException(404, Yii::t('AdminModule.user', 'User not found!'));
+            throw new HttpException(404, Yii::t('AdminModule.user', 'Group not found!'));
         }
 
         if ($user->isSystemAdmin() && !Yii::$app->user->isAdmin()) {
@@ -323,7 +323,7 @@ class UserController extends Controller
 
         $user = User::findOne(['id' => $id]);
 
-        $this->checkUserAccess($user);
+        $this->checkGroupAccess($user);
 
         $user->status = User::STATUS_DISABLED;
         $user->save();
@@ -344,7 +344,7 @@ class UserController extends Controller
 
         $user = User::findOne(['id' => $id]);
 
-        $this->checkUserAccess($user);
+        $this->checkGroupAccess($user);
 
         if (!static::canImpersonate($user)) {
             throw new HttpException(403);

@@ -62,7 +62,7 @@ class CronController extends Controller
 
 
     /**
-     * Force run of the hourly cron jobs (Test Only)
+     * Force run of the hourly cron jobs
      */
     public function actionHourly()
     {
@@ -73,7 +73,7 @@ class CronController extends Controller
 
 
     /**
-     * Force run of the daily cron jobs (Test Only)
+     * Force run of the daily cron jobs
      */
     public function actionDaily()
     {

@@ -19,7 +19,7 @@ use \Facebook\WebDriver\WebDriverKeys;
  *
  * @SuppressWarnings(PHPMD)
  */
-class AcceptanceTester extends BaseTester
+class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
 
@@ -61,6 +61,13 @@ class AcceptanceTester extends BaseTester
         $this->amUser('User3', '123qwe', $logout);
     }
 
+    public $spaces = [
+        '5396d499-20d6-4233-800b-c6c86e5fa34a',
+        '5396d499-20d6-4233-800b-c6c86e5fa34b',
+        '5396d499-20d6-4233-800b-c6c86e5fa34c',
+        '5396d499-20d6-4233-800b-c6c86e5fa34d',
+    ];
+
     public function amOnSpace1($path = '/space/space', $params = [])
     {
         $this->amOnSpace(1, $path, $params);
@@ -88,7 +95,7 @@ class AcceptanceTester extends BaseTester
         }
 
         if(is_int($guid)) {
-            $guid = $this->getFixtureSpaceGuid(--$guid);
+            $guid = $this->spaces[--$guid];
         }
 
         $params['sguid'] = $guid;

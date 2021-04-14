@@ -28,9 +28,6 @@ use yii\helpers\Url;
     'columns' => [
         [
             'attribute' => 'title',
-            'content' => function (ProfileField $model, $key, $index, $that) {
-                return Yii::t($model->getTranslationCategory(), $that->getDataCellValue($model, $key, $index));
-            }
         ],
         [
             'class' => CheckboxColumn::class,
