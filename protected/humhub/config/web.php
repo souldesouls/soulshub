@@ -9,7 +9,7 @@
 $config = [
     'id' => 'humhub',
     'bootstrap' => ['humhub\components\bootstrap\LanguageSelector'],
-    'defaultRoute' => '/home',
+    'defaultRoute' => '/souls/matcher',
     'layoutPath' => '@humhub/views/layouts',
     'components' => [
         'assetManager' => [
