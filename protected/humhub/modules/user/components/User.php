@@ -151,6 +151,8 @@ class User extends \yii\web\User
      */
     public function canChangeUsername()
     {
+        // soliax - force no username changing
+        return false;
         if (in_array('username', AuthClientHelpers::getSyncAttributesByUser($this->getIdentity()))) {
             return false;
         }
@@ -164,6 +166,8 @@ class User extends \yii\web\User
      */
     public function canDeleteAccount()
     {
+        // soliax - force no account deletion until we can sync up redis entropy
+        return false;
         foreach ($this->getAuthClients() as $authClient) {
             if ($authClient instanceof AutoSyncUsers) {
                 return false;
