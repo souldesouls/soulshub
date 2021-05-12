@@ -1,1 +1,1 @@
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="/static/js/canvasjs.min.js"></script>
